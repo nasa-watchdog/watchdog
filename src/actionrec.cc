@@ -32,4 +32,8 @@ int main()
     std::thread imu_thread(run_imu, &imu_out);
     std::thread nfc_thread(run_nfc, &nfc_out);
     std::thread cam_thread(run_cam, &cam_out);
+
+    imu_thread.join();
+    nfc_thread.join();
+    cam_thread.join();
 }
