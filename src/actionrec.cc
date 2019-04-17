@@ -16,18 +16,12 @@
   Author: Ryan Lorica
 */
 
-struct imu_pid {
-    int proportional;
-    int integral;
-    int derivative;
-};
-
-void run_imu(volatile imu_pid &out);
-void run_nfc(volatile int &out);
 
 int main()
 {
     volatile imu_pid imu_out;
+    volatile int nfc_out;
+    volatile int cam_out;
     
     std::thread imu_thread(run_imu, &imu_out);
     std::thread nfc_thread(run_nfc, &nfc_out);
